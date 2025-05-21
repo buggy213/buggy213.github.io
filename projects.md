@@ -8,7 +8,7 @@ title: Projects
 ## [cake](https://github.com/buggy213/cake)
 personal project to learn some compiler theory. targets C language and (rv64? x86? arm?) backend. 
 
-currently still very much in progress, and rather disorganized. my goal this summer is to have a working compiler-assembler-linker stack with some basic optimization passes implemented. i'm hoping to take cs264 sometime soon and use that knowledge as well
+currently still very much in progress, and rather disorganized. my goal this summer is to have a working compiler-assembler-linker stack with some basic optimization passes implemented. i'm hoping to take cs264 sometime soon and use that knowledge as well.
 
 ## [opencl-raytracing](https://github.com/buggy213/opencl-raytracing)
 a bit poorly named, this is a big raytracing i hope to work on some over the summer also. current goals are to focus on vulkan / dxr / optix / other hw-accelerated raytracing and learn more about these apis. 

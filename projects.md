@@ -6,12 +6,12 @@ title: Projects
 # current work
 
 ## [cake](https://github.com/buggy213/cake)
-personal project to learn some compiler theory. targets C language and (rv64? x86? arm?) backend. 
+personal project to learn some compiler theory. targets C language and x86 backend. 
 
-currently still very much in progress, and rather disorganized. my goal this summer is to have a working compiler-assembler-linker stack with some basic optimization passes implemented. i'm hoping to take cs264 sometime soon and use that knowledge as well.
+currently still very much in progress, and rather disorganized. uses cranelift IR to do code generation for now, though i plan to build my own in the future. structs and unions are not yet properly handled by code generation either. 
 
 ## [opencl-raytracing](https://github.com/buggy213/opencl-raytracing)
-a bit poorly named, this is a big raytracing i hope to work on some over the summer also. current goals are to focus on vulkan / dxr / optix / other hw-accelerated raytracing and learn more about these apis. 
+a bit poorly named, this is a big raytracing i hope to work on some. current goals are to focus on vulkan / dxr / optix / other hw-accelerated raytracing and learn more about these apis. 
 
 i'd also like to explore:
 - radiosity-based methods (lumen)
@@ -24,18 +24,20 @@ i'd also like to explore:
 - neural rendering (denoising, radiance caching, etc.) 
 
 ## radiance
-research project at berkeley's slice lab. i plan to work on building out a raytracing acceleration unit (think nvidia's rt cores, intel's rtu)
+research project at berkeley's slice lab. currently, major work is being done on the muon SIMT core targeting a tapeout during this school year. i plan to work on building out a raytracing acceleration unit (think nvidia's rt cores, intel's rtu)
 
 # prior work
 
-## bubble simulator
-based on the paper of Ishida et al. (2017), code simulates bubble surface dynamics using a hyperbolic geometric flow. mathematically, every point on the surface is accelerated proportional to the mean curvature at that point. intuitively, bubbles minimize their surface area, so protruding or sunken in parts get "flattened out". 
+## [bubble simulator](/projects/bubble-simulator)
+based on the paper of Ishida et al. (2017), the code simulates bubble surface dynamics using a hyperbolic geometric flow. mathematically, every point on the surface is accelerated proportional to the mean curvature at that point. intuitively, bubbles minimize their surface area, so protruding or sunken in parts get "flattened out". 
 
 combined with thin-film appearance model of Belcour and Barla (2017) within rgb pathtracing framework (hw3 from cs184).
 
 spring 2024 cs184 showcase honorable mention
 
-todo: add image
+<video muted autoplay width="320" height="180">
+    <source src="assets/images/bubble.mp4" type="video/mp4">
+</video>
 
 ## [python mce](https://github.com/buggy213/ast-experiments)
 metacircular evaluator written in python. extremely simple implementation due to the highly dynamic nature of python, as well as built-in libraries for ast manipulation.

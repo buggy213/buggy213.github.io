@@ -1,0 +1,6 @@
+<figure style='display: table'>
+    <img src="{{include.src}}" {% if include.width %} width="{{include.width}}" {% endif %}>
+    {% if include.caption %}
+    <figcaption style='display: table-caption; caption-side: bottom;'>{{include.caption}}</figcaption>
+    {% endif %}
+</figure>

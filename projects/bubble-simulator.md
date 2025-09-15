@@ -15,16 +15,16 @@ title: Bubble Simulator
 Our project presents physically accurate rendering and simulation of thin-film materials (specifically bubbles). In particular we produced realistic videos showcasing the varying iridescence and movement of bubble surfaces.
 
 The project consists of four components
-- 1. Bubble mesh generation and physical simulation
+1. Bubble mesh generation and physical simulation
     * In this part we implemented simulation through dynamics specified in [Ishida 2017]. This also required using isotropic mesh normalization once the new position of each vertex in the mesh was calculated.
     * Developed a way to export mesh into a `.obj` file at a constant time interval so it could be ingested by the renderer and rendered in a scene.
     * Later, features were added to this simulator including external forces such as placing a wind-field which was modeled using Perlin-based curl-noise.
-- 2. Accurate bubble (thin-film) rendering
+2. Accurate bubble (thin-film) rendering
     * Built a custom BSDF function on top of the CS184 project 3-1 Pathtracer code that outputs a physically accurate reflectance and transmittance for incoming rays. 
     * The function is able to produce these values at every wavelength, allowing for a spectral ray tracer implementation.
-- 3. Environment Map Lighting Support
+3. Environment Map Lighting Support
     * Augmented the Pathtracer to support rendering using an environment map so lighting can be defined by a chosen HDRI file.
-- 4. Animation, by compilation of the completely rendered images at each timestep. 
+4. Animation, by compilation of the completely rendered images at each timestep. 
     * Scripts to animate position of bubble mesh and camera
     * Compiled rendered frames into a video using ffmpeg 
 
@@ -47,7 +47,7 @@ Hyperbolic geometric flow on its own, corresponding to the left term of the equa
 
 To discretize the continuous hyperbolic geometric flow, we follow Ishida in using a triangle mesh and the well-studied discretization of mean-curvature for triangle meshes to implement the dynamics. 
 
-$$H_N = M^{-1}LX$$
+`$$H_N = M^{-1}LX$$`
 
 Where `$M$` denotes mass matrix, `$L$` the cotangent matrix, and `$X$` the vertex positions. This discretization upholds an important invariant studied in differential geometry (Gauss-Bonnet Theorem) and is widely used in computer graphics. 
 
@@ -221,7 +221,14 @@ These are additional videos showcasing bubble with some denoising and camera spi
 
 ## References
 
-TODO: add Ishida, Balcour+Barla papers. 
+[1] Sadashige Ishida, Masafumi Yamamoto, Ryoichi Ando, and Toshiya Hachisuka. 2017. A Hyperbolic Geometric Flow for Evolving Films and Foams. ACM Trans. Graph. 36, 6, Article 199 (November 2017), 11 pages.
+https://doi.org/10.1145/3130800.3130835
+
+[2] Laurent Belcour and Pascal Barla. 2017. A Practical Extension to Microfacet Theory for the Modeling of Varying Iridescence. ACM Trans. Graph. 36, 4, Article 65 (July 2017), 14 pages.
+http://dx.doi.org/10.1145/3072959.3073620
+
+[3] Sadashige Ishida*, Peter Synak*, Fumiya Narita, Toshiya Hachisuka, and Chris Wojtan. 2020. A Model for Soap Film Dynamics with Evolving Thickness. ACM Trans. Graph. 39, 4, Article 31 (July 2020), 11 pages. 
+https://doi.org/10.1145/3386569.3392405
 
 ## Video and Slides
 

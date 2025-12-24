@@ -28,6 +28,9 @@ research project at berkeley's slice lab. currently, major work is being done on
 
 # prior work
 
+## [room acoustics](/projects/room-acoustics)
+simulates room acoustics using finite-difference acoustic wave equation solver
+
 ## [bubble simulator](/projects/bubble-simulator)
 based on the paper of Ishida et al. (2017), the code simulates bubble surface dynamics using a hyperbolic geometric flow. mathematically, every point on the surface is accelerated proportional to the mean curvature at that point. intuitively, bubbles minimize their surface area, so protruding or sunken in parts get "flattened out". 
 

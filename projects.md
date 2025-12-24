@@ -36,7 +36,7 @@ combined with thin-film appearance model of Belcour and Barla (2017) within rgb 
 spring 2024 cs184 showcase honorable mention
 
 <video muted autoplay width="320" height="180">
-    <source src="assets/images/bubble.mp4" type="video/mp4">
+    <source src="assets/images/bubble-simulator/bubble.mp4" type="video/mp4">
 </video>
 
 ## [python mce](https://github.com/buggy213/ast-experiments)

@@ -8,7 +8,7 @@ title: Bubble Simulator
 
 <!-- Hero Video -->
 <video muted autoplay width="640" height="360">
-    <source src="/assets/images/bubble.mp4" type="video/mp4">
+    <source src="/assets/images/bubble-simulator/bubble.mp4" type="video/mp4">
 </video>
 
 ## Abstract
@@ -34,7 +34,7 @@ The project consists of four components
 The first part of the project was bubble mesh generation and simulation. We borrowed the geometric approach from Ishida's 2017 paper "A Hyperbolic Geometric Flow for Evolving Films and Foams". The core idea behind it is a mean-curvature flow, where surface points are accelerated along their normal depending on the mean curvature at those points. This captures the idea that bubbles in the real world tend to minimize their surface area due to surface tension. Points where the bubble is bulging outward get pushed in, and points where the bubble is sunken in get pushed outwards. 
 
 {% include figure.html
-    src="/assets/images/mean-curvature.png"
+    src="/assets/images/bubble-simulator/mean-curvature.png"
     width="720"
     caption="Visualization of mean curvature over a surface. Yellow represents positive curvature and blue represents negative curvature"
 %}
@@ -56,7 +56,7 @@ Ishida’s work goes much farther in extending this flow to non-manifold geometr
 These dynamics were implemented using the `libigl` framework, which provides OpenGL skeleton rendering code and a variety of geometric / mesh processing operations to speed up prototyping. The C++ Eigen library was used to perform linear algebra operations. 
 
 <figure>
-    <img src="/assets/images/libigl.png" width="640">
+    <img src="/assets/images/bubble-simulator/libigl.png" width="640">
     <figcaption>libIGL application window</figcaption>
 </figure>
 
@@ -65,13 +65,13 @@ To preserve numerical stability while running the simulation, we have to periodi
 <div class="horizontal-flexbox">
 
 {% include figure.html 
-    src="/assets/images/remesh.jpeg" 
+    src="/assets/images/bubble-simulator/remesh.jpeg" 
     width="320" 
     caption="Remeshing regularizes degree, area, etc. of triangles and generally improves discretization quality" 
 %}
 
 {% include figure.html 
-    src="/assets/images/numerical-instability.png" 
+    src="/assets/images/bubble-simulator/numerical-instability.png" 
     width="320" 
     caption="No remeshing leads to numerical stability problems" 
 %}
@@ -87,7 +87,7 @@ We also included two external forces within the simulation: wind and gravity. A 
 `$$\mathbf{F}_{wind} = \nabla \times \Psi$$`
 
 {% include figure.html
-    src="/assets/images/wind-field.png"
+    src="/assets/images/bubble-simulator/wind-field.png"
     width="720"
     caption="Wind field visualization"
 %}
@@ -106,7 +106,7 @@ In order to accurately render the bubble we relied on ray tracing. We extended t
 The underlying physics of thin-film interference is what gives them their vibrant colors. Specifically, the wave nature of light interacting with an optical medium leads to interference effects, as shown by this diagram
 
 {% include figure.html
-    src="/assets/images/thin-film-reflectance.png"
+    src="/assets/images/bubble-simulator/thin-film-reflectance.png"
     width="720"
 %}
 
@@ -131,13 +131,13 @@ Refraction and distance traveled (the “optical path difference”) changes the
 <div class="horizontal-flexbox">
 
 {% include figure.html 
-    src="/assets/images/reflectance-plot.png" 
+    src="/assets/images/bubble-simulator/reflectance-plot.png" 
     width="320" 
     caption="Reflectance vs wavelength of a 200nm thin-film with <code>$\eta=1.33$</code>. Incident medium has <code>$\eta=1$</code>, transmitting media has <code>$\eta=1.2$</code>, and incoming ray is at normal incidence and <code>$S$</code>-polarized" 
 %}
 
 {% include figure.html 
-    src="/assets/images/interference.jpeg" 
+    src="/assets/images/bubble-simulator/interference.jpeg" 
     width="320" 
     caption="Bubble thickness increases near bottom due to gravity pulling liquid downward. Thin film near top causes destructive interference at all visible wavelengths, making it appear black" 
 %}
@@ -165,7 +165,7 @@ Much of the implementation required carefully translating the physical equations
 At a high level, we implemented functions that would give the reflectance at a point given the wavelength of the ray, thickness of the film at the point, and the `$\eta$` values of the film. We sample one wavelength per color channel (at 700nm, 546.1nm, and 435.8 nm, where the values of the RGB color matching functions achieve their maximum) Once we get these reflectance and transmittance values at our intersection point, the next issue is actually choosing whether to sample the transmitted ray or the reflected ray as the next bounce. This decision was made by simply probabilistically by choosing the ray proportional to the intensity (i.e. importance sampling based on reflectance / transmittance values).
 
 {% include figure.html
-    src="/assets/images/rgb-reflectance-plot.png"
+    src="/assets/images/bubble-simulator/rgb-reflectance-plot.png"
     width="720"
     caption="reflectance vs thickness at 3 sampled wavelengths at normal incidence, same <code>$\eta$</code> parameters as earlier plot"
 %}
@@ -185,13 +185,13 @@ To create realistic and interesting lighting and reflections we opted for HDRi m
 <div class="horizontal-flexbox">
 
 {% include figure.html 
-    src="/assets/images/umbrellas.png" 
+    src="/assets/images/bubble-simulator/umbrellas.png" 
     width="320" 
     caption="“Outdoor Umbrellas” scene, royalty-free courtesy of HDR-Haven" 
 %}
 
 {% include figure.html 
-    src="/assets/images/benches.png" 
+    src="/assets/images/bubble-simulator/benches.png" 
     width="320" 
     caption="“Paris benches” scene" 
 %}
@@ -205,16 +205,16 @@ In order to connect the mesh and the render portions of our code, we first use t
 
 ## Results
 
-<img src="/assets/images/cube-bubble.png" width="720">
+<img src="/assets/images/bubble-simulator/cube-bubble.png" width="720">
 
 This was one of our rendered images of a bubble during a specific transformative time step, which uses a cube-shaped bubble as the initial starting point.  The background uses the HDRi map mentioned earlier.
 
 <video muted autoplay width="640" height="360">
-    <source src="/assets/images/bubble-2.mp4" type="video/mp4">
+    <source src="/assets/images/bubble-simulator/bubble-2.mp4" type="video/mp4">
 </video>
 
 <video muted autoplay width="640" height="360">
-    <source src="/assets/images/bubble-1.mp4" type="video/mp4">
+    <source src="/assets/images/bubble-simulator/bubble-1.mp4" type="video/mp4">
 </video>
 
 These are additional videos showcasing bubble with some denoising and camera spin
